@@ -22,16 +22,15 @@ const [loading, setLoading] = useState(false);
       setLoading(true);
       // Upload Resume
       const uploadResponse = await axios.post(
-        "http://127.0.0.1:8000/upload",
-        formData
-      );
-
+  `${import.meta.env.VITE_API_URL}/upload`,
+  formData
+);
       setMessage(uploadResponse.data.message);
 
       // Analyze Resume
       const analyzeResponse = await axios.get(
-        `http://127.0.0.1:8000/analyze/${file.name}`
-      );
+  `${import.meta.env.VITE_API_URL}/analyze/${file.name}`
+);
 
       setAnalysis(analyzeResponse.data.analysis);
       setLoading(false);
